@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Leaf, ShieldCheck, Heart, Truck } from "lucide-react";
-import produtoGarrafa from "@/assets/produto-garrafa.png";
+import heroProduto from "@/assets/hero-produto.jpg";
 import logo from "@/assets/logo-mel-duas-abelhas.jpg";
 import { WhatsAppCTA } from "./shared/WhatsAppCTA";
 
@@ -91,42 +91,54 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Product Image */}
+        {/* Product Image — editorial frame */}
         <motion.div
           className="mt-12 flex flex-1 justify-center md:mt-0"
-          initial={{ opacity: 0, scale: 0.85, y: 40 }}
+          initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
-          <div className="relative">
-            {/* Glow rings */}
-            <div className="absolute -inset-16 rounded-full bg-honey/8 blur-[80px]" />
-            <div className="absolute -inset-8 rounded-full bg-honey-gold/6 blur-[40px]" />
+          <div className="group relative w-full max-w-[420px] sm:max-w-[460px] md:max-w-[500px] lg:max-w-[540px]">
+            {/* Ambient glow rings */}
+            <div className="pointer-events-none absolute -inset-20 rounded-full bg-honey/15 blur-[90px]" aria-hidden />
+            <div className="pointer-events-none absolute -inset-10 rounded-full bg-honey-gold/15 blur-[50px]" aria-hidden />
 
-            {/* Floating badge */}
+            {/* Organic asymmetric frame */}
+            <div
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-tl-[3rem] rounded-tr-[1rem] rounded-bl-[1rem] rounded-br-[3rem] ring-1 ring-honey/30 shadow-[0_30px_80px_rgba(80,45,10,0.55)]"
+            >
+              {/* honeycomb texture overlay */}
+              <div className="pointer-events-none absolute inset-0 bg-honeycomb opacity-20 mix-blend-overlay" aria-hidden />
+
+              <img
+                src={heroProduto}
+                alt="Mel Duas Abelhas 500ml — mel puro 100% natural com favo, flores e colheres de mel"
+                loading="eager"
+                className="relative z-10 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              />
+
+              {/* warm bottom vignette */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-warm-brown-deep/50 to-transparent" aria-hidden />
+            </div>
+
+            {/* Floating badges (outside frame) */}
             <motion.div
-              className="absolute -left-4 bottom-16 z-20 rounded-xl border border-honey/20 bg-warm-brown-deep/90 px-4 py-3 shadow-lg backdrop-blur-md md:-left-8"
+              className="absolute -left-3 bottom-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-md md:-left-6"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
               <p className="text-xs font-bold text-honey-gold">100% Natural</p>
-              <p className="text-[10px] text-white/50">Sem aditivos · Sem mistura</p>
+              <p className="text-[10px] text-white/60">Sem aditivos · Sem mistura</p>
             </motion.div>
 
             <motion.div
-              className="absolute -right-2 top-20 z-20 rounded-xl border border-honey/20 bg-warm-brown-deep/90 px-4 py-3 shadow-lg backdrop-blur-md md:-right-6"
+              className="absolute -right-3 top-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-md md:-right-6"
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
               <p className="text-xs font-bold text-honey-gold">Abelha Italiana</p>
-              <p className="text-[10px] text-white/50">Riachão do Jacuípe – BA</p>
+              <p className="text-[10px] text-white/60">Riachão do Jacuípe – BA</p>
             </motion.div>
-
-            <img
-              src={produtoGarrafa}
-              alt="Garrafa de Mel Duas Abelhas 500ml - Mel Puro 100% Natural"
-              className="relative z-10 h-[380px] w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.4)] sm:h-[440px] md:h-[520px] lg:h-[580px]"
-            />
           </div>
         </motion.div>
       </div>
