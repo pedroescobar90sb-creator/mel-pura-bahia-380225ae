@@ -13,13 +13,12 @@ const badges = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden bg-warm-brown-deep">
+    <section className="relative min-h-screen overflow-hidden bg-warm-brown-deep">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-honeycomb-dark" />
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-brown-deep via-warm-brown-deep/95 to-warm-brown-deep" />
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute inset-0 bg-honeycomb-dark" aria-hidden />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" aria-hidden />
 
-      <div className="relative mx-auto flex min-h-[100dvh] max-w-7xl flex-col items-center justify-center px-5 pt-24 pb-20 md:flex-row md:gap-12 md:px-8 lg:gap-20">
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-5 pt-24 pb-20 md:flex-row md:gap-12 md:px-8 lg:gap-20">
         {/* Text Column */}
         <motion.div
           className="flex-1 text-center md:text-left"
@@ -99,13 +98,15 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
           <div className="group relative w-full max-w-[420px] sm:max-w-[460px] md:max-w-[500px] lg:max-w-[540px]">
-            {/* Ambient glow rings */}
-            <div className="pointer-events-none absolute -inset-20 rounded-full bg-honey/15 blur-[90px]" aria-hidden />
-            <div className="pointer-events-none absolute -inset-10 rounded-full bg-honey-gold/15 blur-[50px]" aria-hidden />
+            {/* Ambient glow — single static layer, GPU-promoted, hidden on mobile to avoid scroll repaint */}
+            <div
+              className="pointer-events-none absolute -inset-12 hidden rounded-full bg-honey/15 blur-3xl will-change-transform [transform:translateZ(0)] md:block"
+              aria-hidden
+            />
 
             {/* Organic asymmetric frame */}
             <div
-              className="relative aspect-[4/5] w-full overflow-hidden rounded-tl-[3rem] rounded-tr-[1rem] rounded-bl-[1rem] rounded-br-[3rem] ring-1 ring-honey/30 shadow-[0_30px_80px_rgba(80,45,10,0.55)]"
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-tl-[3rem] rounded-tr-[1rem] rounded-bl-[1rem] rounded-br-[3rem] ring-1 ring-honey/30 shadow-[0_30px_80px_rgba(80,45,10,0.55)] [transform:translateZ(0)]"
             >
               {/* honeycomb texture overlay */}
               <div className="pointer-events-none absolute inset-0 bg-honeycomb opacity-20 mix-blend-overlay" aria-hidden />
@@ -114,16 +115,16 @@ export function Hero() {
                 src={heroProduto}
                 alt="Mel Duas Abelhas 500ml — mel puro 100% natural com favo, flores e colheres de mel"
                 loading="eager"
-                className="relative z-10 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                className="relative z-10 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04] [transform:translateZ(0)] [backface-visibility:hidden]"
               />
 
               {/* warm bottom vignette */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-warm-brown-deep/50 to-transparent" aria-hidden />
             </div>
 
-            {/* Floating badges (outside frame) */}
+            {/* Floating badges — solid bg (no backdrop-blur), GPU-promoted */}
             <motion.div
-              className="absolute -left-3 bottom-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-md md:-left-6"
+              className="absolute -left-3 bottom-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] will-change-transform md:-left-6"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -132,7 +133,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              className="absolute -right-3 top-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] backdrop-blur-md md:-right-6"
+              className="absolute -right-3 top-10 z-20 rounded-xl border border-honey/30 bg-warm-brown-deep px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] will-change-transform md:-right-6"
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >

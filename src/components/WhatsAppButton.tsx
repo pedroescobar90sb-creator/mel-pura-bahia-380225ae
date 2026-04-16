@@ -7,7 +7,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_-4px_rgba(37,211,102,0.5)] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_35px_-4px_rgba(37,211,102,0.6)] active:scale-95 md:h-16 md:w-16"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_-4px_rgba(37,211,102,0.5)] transition-transform duration-200 [transform:translateZ(0)] hover:scale-110 active:scale-95 md:h-16 md:w-16"
     >
       <svg
         viewBox="0 0 32 32"
