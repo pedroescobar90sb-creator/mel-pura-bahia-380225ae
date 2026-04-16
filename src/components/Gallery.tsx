@@ -7,49 +7,54 @@ import img5 from "@/assets/produto-lote3.png";
 import img6 from "@/assets/produto-lote4.png";
 
 const images = [
-  { src: img1, alt: "Garrafa de Mel Duas Abelhas na mão" },
-  { src: img2, alt: "Trio de garrafas Mel Duas Abelhas" },
-  { src: img3, alt: "Lote de garrafas Mel Duas Abelhas" },
-  { src: img4, alt: "Garrafas de mel vistas de frente" },
-  { src: img5, alt: "Produção de mel artesanal" },
-  { src: img6, alt: "Garrafas de mel alinhadas" },
+  { src: img1, alt: "Garrafa de Mel Duas Abelhas na mão", span: "md:col-span-2 md:row-span-2" },
+  { src: img2, alt: "Trio de garrafas Mel Duas Abelhas", span: "" },
+  { src: img3, alt: "Lote de garrafas Mel Duas Abelhas", span: "" },
+  { src: img4, alt: "Garrafas de mel vistas de frente", span: "" },
+  { src: img5, alt: "Produção de mel artesanal", span: "" },
+  { src: img6, alt: "Garrafas de mel alinhadas", span: "md:col-span-2" },
 ];
 
 export function Gallery() {
   return (
-    <section className="bg-warm-cream py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4">
+    <section className="relative overflow-hidden bg-warm-brown-deep py-24 md:py-32">
+      <div className="absolute inset-0 bg-honeycomb-dark" />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          className="mb-14 text-center"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="mb-3 inline-block rounded-full bg-honey-light/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-honey-dark">
+          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-honey-gold">
             Produto Real
           </span>
-          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl">
-            Conheça de perto o nosso mel
+          <h2 className="font-heading text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            Conheça de perto o{" "}
+            <span className="text-gradient-honey">nosso mel</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           {images.map((img, i) => (
             <motion.div
               key={i}
-              className="group overflow-hidden rounded-xl border border-honey/10"
+              className={`group overflow-hidden rounded-2xl border border-white/5 ${img.span}`}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
+              <div className="relative h-full overflow-hidden bg-warm-brown/30">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-warm-brown-deep/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              </div>
             </motion.div>
           ))}
         </div>

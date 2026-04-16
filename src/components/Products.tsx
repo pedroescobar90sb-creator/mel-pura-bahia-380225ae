@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import produtoGarrafa from "@/assets/produto-garrafa.png";
 import produtoTrio from "@/assets/produto-trio.png";
+import arteOferta from "@/assets/arte-oferta.png";
 import { WHATSAPP_URL } from "./WhatsAppButton";
 
 const products = [
@@ -19,7 +20,7 @@ const products = [
     cta: "Consultar valor especial",
   },
   {
-    image: null,
+    image: arteOferta,
     name: "Pedido personalizado",
     desc: "Atacado, eventos, cestas de presente ou quantidades maiores. Fale conosco e montamos sua proposta.",
     highlight: "Sob consulta",
@@ -29,53 +30,59 @@ const products = [
 
 export function Products() {
   return (
-    <section id="produtos" className="bg-warm-cream py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4">
+    <section id="produtos" className="relative overflow-hidden bg-warm-cream py-24 md:py-32">
+      <div className="absolute inset-0 bg-honeycomb opacity-30" />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
-          className="mb-14 text-center"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="mb-3 inline-block rounded-full bg-honey-light/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-honey-dark">
+          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-honey-dark">
             Nossos Produtos
           </span>
-          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl">
-            Escolha o seu mel puro
+          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+            Escolha o seu{" "}
+            <span className="text-gradient-honey">mel puro</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
+            Mel 100% natural de abelha italiana. Direto do produtor para Salvador e RMS.
+          </p>
         </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {products.map((p, i) => (
             <motion.div
               key={p.name}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-honey/15 bg-card shadow-sm transition-shadow hover:shadow-honey-lg"
-              initial={{ opacity: 0, y: 24 }}
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-honey/10 bg-card shadow-card-premium transition-all duration-500 hover:-translate-y-2 hover:shadow-card-hover"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
             >
-              <div className="relative flex h-56 items-center justify-center bg-warm-beige/50">
-                {p.image ? (
-                  <img src={p.image} alt={p.name} className="h-48 w-auto object-contain transition-transform group-hover:scale-105" />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="text-5xl">🍯</span>
-                  </div>
-                )}
-                <span className="absolute top-4 right-4 rounded-full bg-honey-dark px-3 py-1 text-xs font-bold text-white">
+              {/* Image area */}
+              <div className="relative flex h-64 items-center justify-center overflow-hidden bg-gradient-to-b from-warm-beige/80 to-warm-cream/50 md:h-72">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="h-52 w-auto object-contain transition-transform duration-700 group-hover:scale-110 md:h-56"
+                />
+                <span className="absolute top-4 right-4 rounded-full bg-warm-brown-deep px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-honey-gold">
                   {p.highlight}
                 </span>
               </div>
-              <div className="flex flex-1 flex-col p-6">
+
+              {/* Content */}
+              <div className="flex flex-1 flex-col p-7">
                 <h3 className="font-heading text-xl font-bold text-foreground">{p.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-honey transition-all hover:shadow-honey-lg active:scale-95"
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-warm-brown-deep px-6 py-3.5 text-sm font-bold text-honey-gold transition-all duration-300 hover:bg-warm-brown hover:shadow-honey active:scale-[0.97]"
                 >
                   {p.cta}
                 </a>
