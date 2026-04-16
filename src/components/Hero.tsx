@@ -27,6 +27,23 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          {/* Logo seal */}
+          <motion.div
+            className="mb-5 flex justify-center md:justify-start"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <span className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full ring-2 ring-honey/40 shadow-[0_10px_40px_rgba(190,140,40,0.4)] md:h-20 md:w-20">
+              <img
+                src={logo}
+                alt="Mel Duas Abelhas — Mel Puro 100% Natural"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </span>
+          </motion.div>
+
           {/* Tagline */}
           <motion.span
             className="mb-6 inline-block rounded-full border border-honey/30 bg-honey/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-honey-gold"
