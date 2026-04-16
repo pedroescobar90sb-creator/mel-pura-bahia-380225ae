@@ -33,6 +33,11 @@ export const Route = createRootRoute({
       { name: "description", content: "Mel puro 100% natural de abelha italiana, direto do produtor. Entregas em Salvador e RMS." },
       { name: "author", content: "Mel Duas Abelhas" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Mel Duas Abelhas — Mel Puro 100% Natural em Salvador" },
+      { name: "twitter:title", content: "Mel Duas Abelhas — Mel Puro 100% Natural em Salvador" },
+      { property: "og:description", content: "Mel puro 100% natural de abelha italiana, direto do produtor. Entregas em Salvador e RMS." },
+      { name: "twitter:description", content: "Mel puro 100% natural de abelha italiana, direto do produtor. Entregas em Salvador e RMS." },
+      { property: "og:type", content: "website" },
     ],
     links: [
       {
