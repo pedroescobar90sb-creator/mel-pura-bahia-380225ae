@@ -30,19 +30,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
         <a href="#" className="flex items-center gap-3" aria-label="Mel Duas Abelhas - Início">
-          <span
-            className={`flex items-center justify-center overflow-hidden rounded-full ring-1 ring-honey/30 transition-all duration-500 ${
-              scrolled ? "h-11 w-11 shadow-[0_6px_20px_rgba(190,140,40,0.35)]" : "h-12 w-12 shadow-[0_8px_30px_rgba(190,140,40,0.45)]"
-            }`}
-          >
-            <img
-              src={logo}
-              alt="Mel Duas Abelhas — Mel Puro 100% Natural"
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
-          </span>
-          <span className="hidden font-heading text-lg font-bold tracking-tight text-white sm:inline-block">
+          <span className="font-heading text-lg font-bold tracking-tight text-white sm:text-xl">
             Mel <span className="text-honey-gold">Duas Abelhas</span>
           </span>
         </a>
