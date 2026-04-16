@@ -1,15 +1,26 @@
 import { MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo-mel-duas-abelhas.jpg";
 
 export function Footer() {
   return (
     <footer className="border-t border-white/5 bg-warm-brown-deep py-14 text-warm-cream">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
-          <div>
-            <h3 className="font-heading text-2xl font-bold">
-              Mel <span className="text-honey-gold">Duas Abelhas</span>
-            </h3>
-            <p className="mt-2 text-sm text-white/50">Mel Puro 100% Natural · Abelha Italiana</p>
+          <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-5 md:text-left">
+            <span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full ring-2 ring-honey/30 shadow-[0_10px_40px_rgba(190,140,40,0.35)]">
+              <img
+                src={logo}
+                alt="Mel Duas Abelhas — Mel Puro 100% Natural"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </span>
+            <div>
+              <h3 className="font-heading text-2xl font-bold">
+                Mel <span className="text-honey-gold">Duas Abelhas</span>
+              </h3>
+              <p className="mt-2 text-sm text-white/50">Mel Puro 100% Natural · Abelha Italiana</p>
+            </div>
           </div>
           <div className="flex flex-col gap-3 text-sm text-white/50">
             <div className="flex items-center gap-2.5">
