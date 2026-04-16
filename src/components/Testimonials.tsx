@@ -58,7 +58,7 @@ export function Testimonials() {
       <FadeIn delay={0.4} className="mt-12">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 rounded-2xl border border-honey/20 bg-card/80 p-7 text-center md:flex-row md:text-left">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-honey/15">
-            <Instagram className="h-6 w-6 text-honey-dark" />
+            <Camera className="h-6 w-6 text-honey-dark" />
           </div>
           <div className="flex-1">
             <p className="font-heading text-base font-bold text-foreground md:text-lg">
