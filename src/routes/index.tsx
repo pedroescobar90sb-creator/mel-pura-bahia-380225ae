@@ -13,6 +13,7 @@ import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { WelcomeModal } from "@/components/WelcomeModal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -71,6 +72,7 @@ function Index() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <WelcomeModal />
     </>
   );
 }
