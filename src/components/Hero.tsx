@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Leaf, ShieldCheck, Heart, Truck } from "lucide-react";
 import produtoGarrafa from "@/assets/produto-garrafa.png";
-import { WHATSAPP_URL } from "./WhatsAppButton";
+import { WhatsAppCTA } from "./shared/WhatsAppCTA";
 
 const badges = [
   { icon: Leaf, text: "100% Natural" },
@@ -61,15 +61,9 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-full bg-honey px-8 py-4 text-base font-bold text-warm-brown-deep shadow-honey-lg transition-all duration-300 hover:bg-honey-gold hover:shadow-[0_20px_60px_-10px_oklch(0.76_0.16_72/0.4)] active:scale-[0.97]"
-            >
-              <span>🐝</span>
+            <WhatsAppCTA size="lg" icon={<span aria-hidden>🐝</span>}>
               Pedir agora pelo WhatsApp
-            </a>
+            </WhatsAppCTA>
             <a
               href="#produtos"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 text-base font-semibold text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-honey/40 hover:bg-white/10"

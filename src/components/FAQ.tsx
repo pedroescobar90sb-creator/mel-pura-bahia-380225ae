@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { SectionWrapper } from "./shared/SectionWrapper";
+import { SectionHeader } from "./shared/SectionHeader";
+import { FadeIn } from "./shared/FadeIn";
 
 const faqs = [
   {
@@ -28,13 +30,7 @@ const faqs = [
 function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div
-      className="border-b border-honey/10 last:border-b-0"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.06 }}
-    >
+    <FadeIn delay={index * 0.06} duration={0.4} className="border-b border-honey/10 last:border-b-0">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between py-6 text-left transition-colors hover:text-honey-dark"
@@ -47,41 +43,28 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
       <div className={`overflow-hidden transition-all duration-400 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
         <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{a}</p>
       </div>
-    </motion.div>
+    </FadeIn>
   );
 }
 
 export function FAQ() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 bg-honeycomb" />
-      <div className="relative mx-auto max-w-3xl px-5 md:px-8">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-honey-dark">
-            Dúvidas frequentes
-          </span>
-          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            Perguntas e{" "}
-            <span className="text-gradient-honey">respostas</span>
-          </h2>
-        </motion.div>
+    <SectionWrapper variant="light" narrow>
+      <SectionHeader
+        eyebrow="Dúvidas frequentes"
+        title="Perguntas e"
+        highlight="respostas"
+      />
 
-        <div className="rounded-3xl border border-honey/10 bg-card px-7 py-2 shadow-card-premium md:px-10">
-          {faqs.map((faq, i) => (
-            <FaqItem key={faq.q} {...faq} index={i} />
-          ))}
-        </div>
-
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          ⚠️ Mel não é indicado para menores de 1 ano.
-        </p>
+      <div className="rounded-3xl border border-honey/10 bg-card px-7 py-2 shadow-card-premium md:px-10">
+        {faqs.map((faq, i) => (
+          <FaqItem key={faq.q} {...faq} index={i} />
+        ))}
       </div>
-    </section>
+
+      <p className="mt-8 text-center text-sm text-muted-foreground">
+        ⚠️ Mel não é indicado para menores de 1 ano.
+      </p>
+    </SectionWrapper>
   );
 }

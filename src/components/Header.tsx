@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { WHATSAPP_URL } from "./WhatsAppButton";
+import { WhatsAppCTA } from "./shared/WhatsAppCTA";
 
 const navLinks = [
   { href: "#beneficios", label: "Benefícios" },
@@ -47,14 +47,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden rounded-full bg-honey px-6 py-2.5 text-sm font-bold text-warm-brown-deep shadow-honey transition-all duration-300 hover:bg-honey-gold hover:shadow-honey-lg active:scale-95 sm:inline-flex"
-          >
+          <WhatsAppCTA size="sm" className="hidden sm:inline-flex">
             Pedir agora
-          </a>
+          </WhatsAppCTA>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex h-10 w-10 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 md:hidden"
@@ -82,15 +77,9 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
-            className="mt-3 flex w-full items-center justify-center rounded-full bg-honey py-3 text-base font-bold text-warm-brown-deep shadow-honey"
-          >
+          <WhatsAppCTA size="md" className="mt-3 w-full">
             Pedir agora pelo WhatsApp
-          </a>
+          </WhatsAppCTA>
         </div>
       </div>
     </header>

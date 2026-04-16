@@ -1,4 +1,4 @@
-const WHATSAPP_URL = "https://wa.me/5571988084005?text=Oi%2C+quero+comprar+Mel+Duas+Abelhas.+Vi+no+site+e+gostaria+de+mais+informações+sobre+valores+e+entrega+em+Salvador%2FRMS.";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 export function WhatsAppButton() {
   return (
@@ -20,5 +20,3 @@ export function WhatsAppButton() {
     </a>
   );
 }
-
-export { WHATSAPP_URL };
