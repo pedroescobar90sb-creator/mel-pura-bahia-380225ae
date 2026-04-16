@@ -32,7 +32,7 @@ const products: Product[] = [
     desc: "Uma garrafa de mel puro 100% natural, de abelha italiana, direto de Riachão do Jacuípe.",
     highlight: "Mais vendido",
     cta: "Comprar pelo WhatsApp",
-    fit: "contain",
+    fit: "cover-center",
     height: "h-80 md:h-96",
     whatsappMessage:
       "Oi! Quero comprar 1 garrafa de Mel Duas Abelhas 500 ml. Pode me passar o valor e a entrega em Salvador/RMS?",
