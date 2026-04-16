@@ -46,6 +46,8 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/jpeg", href: "/logo-mel-duas-abelhas.jpg" },
+      { rel: "apple-touch-icon", href: "/logo-mel-duas-abelhas.jpg" },
     ],
   }),
   shellComponent: RootShell,
