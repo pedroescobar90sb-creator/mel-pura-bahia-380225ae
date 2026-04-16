@@ -3,42 +3,45 @@ import { SectionWrapper } from "./shared/SectionWrapper";
 import { SectionHeader } from "./shared/SectionHeader";
 import { FadeIn } from "./shared/FadeIn";
 import { WhatsAppCTA } from "./shared/WhatsAppCTA";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const steps = [
   {
     icon: MessageCircle,
     step: "01",
-    title: "Clique no botão do WhatsApp",
-    desc: "Você será direcionado para nosso atendimento rápido e direto.",
+    title: "Chame no WhatsApp",
+    desc: "Atendimento direto, sem robô e sem cadastro.",
   },
   {
     icon: MapPin,
     step: "02",
-    title: "Informe quantidade e bairro",
-    desc: "Diga quantas garrafas deseja e seu bairro em Salvador ou RMS.",
+    title: "Diga quantidade e bairro",
+    desc: "Confirmamos disponibilidade e entrega em Salvador ou RMS.",
   },
   {
     icon: CreditCard,
     step: "03",
-    title: "Combine pagamento e entrega",
-    desc: "Forma de pagamento flexível e entrega combinada no seu tempo.",
+    title: "Pague na entrega ou PIX",
+    desc: "Forma de pagamento flexível. Mel entregue em até 24h.",
   },
 ];
+
+const howToMessage =
+  "Oi! Quero fazer meu pedido do Mel Duas Abelhas. Pode me passar valores e combinar a entrega?";
 
 export function HowToBuy() {
   return (
     <SectionWrapper variant="light">
       <SectionHeader
-        eyebrow="Simples e rápido"
-        title="Como comprar"
+        eyebrow="3 passos · Sem complicação"
+        title="Como pedir"
         highlight="seu mel"
-        description="Atendimento direto em Salvador e Região Metropolitana. Sem burocracia."
+        description="Atendimento direto em Salvador e Região Metropolitana. Entrega em até 24h."
       />
 
       <div className="grid gap-8 md:grid-cols-3">
         {steps.map((s, i) => (
           <FadeIn key={s.step} delay={i * 0.12} className="relative text-center">
-            {/* Connector line (desktop) */}
             {i < steps.length - 1 && (
               <div className="absolute top-10 left-[calc(50%+40px)] hidden h-px w-[calc(100%-80px)] bg-gradient-to-r from-honey/30 to-honey/10 md:block" />
             )}
@@ -54,9 +57,14 @@ export function HowToBuy() {
       </div>
 
       <FadeIn delay={0.4} className="mt-14 text-center">
-        <WhatsAppCTA size="lg" icon={<MessageCircle className="h-5 w-5" />}>
-          Iniciar pedido pelo WhatsApp
+        <WhatsAppCTA
+          size="lg"
+          href={buildWhatsAppUrl(howToMessage)}
+          icon={<MessageCircle className="h-5 w-5" />}
+        >
+          Fazer meu pedido agora
         </WhatsAppCTA>
+        <p className="mt-3 text-sm text-muted-foreground">Resposta rápida · Sem cadastro · Sem aplicativo</p>
       </FadeIn>
     </SectionWrapper>
   );

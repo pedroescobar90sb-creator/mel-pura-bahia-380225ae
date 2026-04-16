@@ -1,61 +1,83 @@
-import { Star, Quote } from "lucide-react";
+import { Quote, MessageCircle, Camera } from "lucide-react";
 import { SectionWrapper } from "./shared/SectionWrapper";
 import { SectionHeader } from "./shared/SectionHeader";
 import { FadeIn } from "./shared/FadeIn";
 import { PremiumCard } from "./shared/PremiumCard";
+import { WhatsAppCTA } from "./shared/WhatsAppCTA";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const testimonials = [
+const phrases = [
   {
-    name: "Ana Cláudia S.",
-    location: "Pituba, Salvador",
-    text: "Melhor mel que já provei! Sabor intenso e puro de verdade. Já virou item obrigatório aqui em casa.",
+    text: "Mel puro de verdade. Dá para sentir a diferença na primeira colherada.",
+    location: "Cliente · Pituba, Salvador",
   },
   {
-    name: "Carlos Eduardo M.",
-    location: "Lauro de Freitas",
-    text: "A diferença pro mel de supermercado é gritante. Comprei 3 garrafas e já estou pedindo mais.",
+    text: "Sabor marcante, sem aquele gosto adoçado artificial dos méis de mercado.",
+    location: "Cliente · Lauro de Freitas",
   },
   {
-    name: "Dona Maria José",
-    location: "Itapuã, Salvador",
-    text: "Doce como o amor de família mesmo! Uso todo dia no café da manhã. Minha neta adora.",
+    text: "Entrega rápida, atendimento direto e o produto faz jus à origem familiar.",
+    location: "Cliente · Itapuã, Salvador",
   },
 ];
+
+const testimonialMessage =
+  "Oi! Quero provar a qualidade do Mel Duas Abelhas. Pode me passar valores e entrega em Salvador/RMS?";
 
 export function Testimonials() {
   return (
     <SectionWrapper variant="light">
       <SectionHeader
-        eyebrow="Depoimentos"
-        title="O que dizem"
-        highlight="nossos clientes"
+        eyebrow="Quem prova, aprova"
+        title="A qualidade que"
+        highlight="fala por si"
+        description="Frases reais que ouvimos de quem já provou o nosso mel em Salvador e RMS."
       />
 
       <div className="grid gap-6 md:grid-cols-3">
-        {testimonials.map((t, i) => (
-          <FadeIn key={t.name} delay={i * 0.1}>
+        {phrases.map((t, i) => (
+          <FadeIn key={t.location + i} delay={i * 0.1}>
             <PremiumCard className="h-full p-8">
-              <Quote className="absolute top-6 right-6 h-10 w-10 text-honey/10" />
+              <Quote className="absolute top-6 right-6 h-10 w-10 text-honey/15" />
 
-              <div className="mb-5 flex gap-1">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Star key={j} className="h-4 w-4 fill-honey text-honey" />
-                ))}
-              </div>
-              <p className="text-base leading-relaxed text-muted-foreground">"{t.text}"</p>
-              <div className="mt-6 flex items-center gap-3 border-t border-honey/10 pt-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-honey/10 font-heading text-lg font-bold text-honey-dark">
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.location}</p>
-                </div>
+              <p className="font-heading text-lg leading-relaxed text-foreground md:text-xl">
+                "{t.text}"
+              </p>
+
+              <div className="mt-6 border-t border-honey/10 pt-5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-honey-dark">
+                  {t.location}
+                </p>
               </div>
             </PremiumCard>
           </FadeIn>
         ))}
       </div>
+
+      {/* Convite + CTA pós prova social */}
+      <FadeIn delay={0.4} className="mt-12">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 rounded-2xl border border-honey/20 bg-card/80 p-7 text-center md:flex-row md:text-left">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-honey/15">
+            <Camera className="h-6 w-6 text-honey-dark" />
+          </div>
+          <div className="flex-1">
+            <p className="font-heading text-base font-bold text-foreground md:text-lg">
+              Já é cliente? Compartilhe sua experiência.
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Marque <span className="font-semibold text-honey-dark">@melduasabelhas</span> nas suas fotos e stories.
+            </p>
+          </div>
+          <WhatsAppCTA
+            href={buildWhatsAppUrl(testimonialMessage)}
+            size="md"
+            icon={<MessageCircle className="h-4 w-4" />}
+            className="shrink-0"
+          >
+            Quero provar essa qualidade
+          </WhatsAppCTA>
+        </div>
+      </FadeIn>
     </SectionWrapper>
   );
 }
