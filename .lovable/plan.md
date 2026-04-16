@@ -1,46 +1,46 @@
 
-## Plano: Adicionar a logo oficial Mel Duas Abelhas
+## Plano: Trocar imagem do Hero pela foto profissional do produto
 
-### Análise da logo recebida
-- Logo circular ilustrada: 2 abelhas, colmeia dourada, lettering script "Mel Duas Abelhas" em marrom, fita dourada "Mel Puro 100% Natural / Abelha Italiana", flores e concha de mel na base
-- Fundo bege claro com favos sutis — combina perfeitamente com a paleta atual (warm-cream, honey, warm-brown)
-- Estilo ilustrado/artesanal premium → alinha com posicionamento da marca
+### Análise
+- A imagem atual no Hero (`hero-mel.jpg`) é uma foto amadora — garrafa na mão sobre piso de cozinha
+- A nova imagem enviada (`WhatsApp_Image_2026-04-16_at_19.25.02.jpeg`) é uma foto profissional de produto: garrafa Mel Duas Abelhas em cenário rústico com favo, flores, colheres de mel — qualidade editorial premium
+- Usuário também reclama do "formato quadrado genérico" → precisa de tratamento editorial igual aos cards de produto
 
-### Onde a logo vai aparecer
+### O que fazer
 
-**1. Header (`src/components/Header.tsx`)** — substituir o atual logo textual + ícone genérico de favo pela logo real
-- Mobile: logo ~44px de altura
-- Desktop: logo ~52px de altura
-- Manter wordmark de apoio? **Não** — a logo já contém o nome. Remover texto duplicado para layout limpo.
+**1. Substituir asset**
+- Copiar `WhatsApp_Image_2026-04-16_at_19.25.02.jpeg` → `src/assets/hero-produto.jpg`
+- Atualizar import no `Hero.tsx`
 
-**2. Footer (`src/components/Footer.tsx`)** — usar a logo em destaque no topo do footer (~80px)
+**2. Tratamento visual premium da imagem do Hero (sair do quadrado)**
 
-**3. Hero (`src/components/Hero.tsx`)** — adicionar a logo como pequeno selo/monograma acima do eyebrow ou flutuando como elemento de marca (sutil, ~64-72px), reforçando identidade na primeira dobra
+Aplicar a mesma linguagem editorial dos cards de produto, mas em escala maior:
 
-**4. Favicon e meta tags** (`src/routes/__root.tsx` + `public/`) — usar a logo como favicon e og:image (compartilhamento social)
+- **Máscara orgânica assimétrica**: bordas arredondadas grandes e desiguais — `rounded-tl-[3rem] rounded-tr-[1rem] rounded-bl-[1rem] rounded-br-[3rem]` (forma orgânica, "gota de mel")
+- **Aspect ratio vertical premium**: `aspect-[4/5]` ou `aspect-[3/4]` em vez de quadrado — valoriza a verticalidade da garrafa
+- **Camadas de profundidade**:
+  - Glow dourado radial atrás da imagem (`bg-honey/30 blur-[80px]`)
+  - Anel sutil dourado na borda (`ring-1 ring-honey/30`)
+  - Drop-shadow forte e quente (`drop-shadow-[0_30px_60px_rgba(80,45,10,0.45)]`)
+- **Floating badges reposicionados**:
+  - "Abelha Italiana / Riachão do Jacuípe – BA" → top-right, fundo escuro com blur
+  - "100% Natural / Sem aditivos · Sem mistura" → bottom-left, fundo escuro com blur
+  - Manter a animação de entrada existente
+- **Elemento decorativo**: pequeno favo/honeycomb pattern atrás como textura sutil
+- **Hover sutil**: leve scale (`hover:scale-[1.02]`) com transição suave
 
-### Tratamento técnico
-- Copiar a imagem para `src/assets/logo-mel-duas-abelhas.png` via `lov-copy`
-- Importar como ES module nos 3 componentes
-- A logo tem fundo bege que **combina** com `bg-warm-cream` do site → sem necessidade de remover fundo. Em fundos escuros (footer dark, hero dark), aplicar:
-  - Container circular branco/cream sutil com leve sombra dourada (`shadow-[0_8px_30px_rgba(190,140,40,0.25)]`)
-  - OU usar `mix-blend-mode: multiply` para integrar visualmente
-- Para o favicon: gerar versão quadrada cropada via CSS `object-cover` ou usar a imagem direta (browser aceita PNG)
-- Adicionar `alt="Mel Duas Abelhas — Mel Puro 100% Natural"` para SEO/acessibilidade
+**3. Reaproveitar o `ProductImageFrame`?**
+Não — o Hero precisa de um tratamento próprio mais cinematográfico (vertical, badges flutuantes externos, escala maior). Vou aplicar o mesmo VOCABULÁRIO visual (glow, máscara orgânica, ring, drop-shadow) inline no Hero, mantendo consistência sem forçar reuso que limitaria a composição.
 
-### Arquivos a editar/criar
+### Arquivos
 
 | Ação | Arquivo |
 |------|---------|
-| Criar | `src/assets/logo-mel-duas-abelhas.png` (copiado do upload) |
-| Copiar para public (favicon) | `public/logo-mel-duas-abelhas.png` |
-| Editar | `src/components/Header.tsx` — substituir bloco logo |
-| Editar | `src/components/Footer.tsx` — adicionar logo no topo |
-| Editar | `src/components/Hero.tsx` — adicionar selo da logo |
-| Editar | `src/routes/__root.tsx` — favicon + og:image |
+| Criar | `src/assets/hero-produto.jpg` (copiado do upload) |
+| Editar | `src/components/Hero.tsx` — trocar import + refatorar bloco da imagem com máscara orgânica, glow, badges flutuantes |
 
 ### Resultado esperado
-- Marca visualmente reconhecível em todas as seções principais
-- Identidade reforçada já na primeira dobra do hero
-- Favicon e preview de compartilhamento (WhatsApp, redes) com a logo real
-- Zero impacto na performance (1 imagem, lazy nos pontos secundários)
+- Foto profissional substitui a amadora → muito mais valor percebido
+- Imagem com forma orgânica editorial, não mais "quadrado genérico"
+- Mesma linguagem visual dos cards de produto (glow honey, ring sutil, sombras quentes)
+- Composição vertical que valoriza o produto e equilibra com o texto à esquerda
