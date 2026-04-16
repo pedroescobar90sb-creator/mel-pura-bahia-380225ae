@@ -25,50 +25,60 @@ const faqs = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-honey/15">
+    <motion.div
+      className="border-b border-honey/10 last:border-b-0"
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: index * 0.06 }}
+    >
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5 text-left"
+        className="flex w-full items-center justify-between py-6 text-left transition-colors hover:text-honey-dark"
       >
-        <span className="font-heading text-base font-semibold text-foreground md:text-lg">{q}</span>
-        <ChevronDown className={`h-5 w-5 shrink-0 text-honey-dark transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="pr-4 font-heading text-base font-semibold text-foreground md:text-lg">{q}</span>
+        <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-honey/20 transition-all duration-300 ${open ? "rotate-180 bg-honey/10" : ""}`}>
+          <ChevronDown className="h-4 w-4 text-honey-dark" />
+        </div>
       </button>
-      <div className={`overflow-hidden transition-all ${open ? "max-h-96 pb-5" : "max-h-0"}`}>
-        <p className="text-sm leading-relaxed text-muted-foreground">{a}</p>
+      <div className={`overflow-hidden transition-all duration-400 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
+        <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{a}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export function FAQ() {
   return (
-    <section className="bg-honeycomb py-20 md:py-28">
-      <div className="mx-auto max-w-2xl px-4">
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="absolute inset-0 bg-honeycomb" />
+      <div className="relative mx-auto max-w-3xl px-5 md:px-8">
         <motion.div
-          className="mb-14 text-center"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="mb-3 inline-block rounded-full bg-honey-light/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-honey-dark">
+          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-honey-dark">
             Dúvidas frequentes
           </span>
-          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl">
-            Perguntas e respostas
+          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+            Perguntas e{" "}
+            <span className="text-gradient-honey">respostas</span>
           </h2>
         </motion.div>
 
-        <div className="rounded-2xl border border-honey/15 bg-card px-6 shadow-sm">
-          {faqs.map((faq) => (
-            <FaqItem key={faq.q} {...faq} />
+        <div className="rounded-3xl border border-honey/10 bg-card px-7 py-2 shadow-card-premium md:px-10">
+          {faqs.map((faq, i) => (
+            <FaqItem key={faq.q} {...faq} index={i} />
           ))}
         </div>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground">
+        <p className="mt-8 text-center text-sm text-muted-foreground">
           ⚠️ Mel não é indicado para menores de 1 ano.
         </p>
       </div>
