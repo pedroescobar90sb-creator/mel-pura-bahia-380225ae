@@ -38,6 +38,8 @@ export const Route = createRootRoute({
       { property: "og:description", content: "Mel puro 100% natural de abelha italiana, direto do produtor. Entregas em Salvador e RMS." },
       { name: "twitter:description", content: "Mel puro 100% natural de abelha italiana, direto do produtor. Entregas em Salvador e RMS." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/nh6wfDH8cxOwmuF9c4MR3imh5g82/social-images/social-1776353229106-WhatsApp_Image_2026-04-16_at_12.27.00.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/nh6wfDH8cxOwmuF9c4MR3imh5g82/social-images/social-1776353229106-WhatsApp_Image_2026-04-16_at_12.27.00.webp" },
     ],
     links: [
       {
