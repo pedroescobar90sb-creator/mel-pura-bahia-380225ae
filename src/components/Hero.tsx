@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Leaf, ShieldCheck, Heart, Truck } from "lucide-react";
 import produtoGarrafa from "@/assets/produto-garrafa.png";
+import logo from "@/assets/logo-mel-duas-abelhas.jpg";
 import { WhatsAppCTA } from "./shared/WhatsAppCTA";
 
 const badges = [
