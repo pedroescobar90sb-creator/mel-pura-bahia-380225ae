@@ -22,10 +22,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 [transform:translateZ(0)] ${
         scrolled
-          ? "border-b border-honey/10 bg-warm-brown-deep/95 shadow-lg backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-b border-honey/10 bg-warm-brown-deep/95 shadow-lg"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
@@ -67,7 +67,7 @@ export function Header() {
           mobileOpen ? "max-h-80" : "max-h-0"
         }`}
       >
-        <div className="border-t border-white/10 bg-warm-brown-deep/98 px-5 pb-6 pt-4 backdrop-blur-xl">
+        <div className="border-t border-white/10 bg-warm-brown-deep px-5 pb-6 pt-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
