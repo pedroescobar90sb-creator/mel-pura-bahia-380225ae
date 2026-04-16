@@ -1,8 +1,9 @@
 import artePureza from "@/assets/arte-pureza.png";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, MessageCircle } from "lucide-react";
 import { SectionWrapper } from "./shared/SectionWrapper";
 import { FadeIn } from "./shared/FadeIn";
 import { WhatsAppCTA } from "./shared/WhatsAppCTA";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const points = [
   "Mel puro, sem adição de açúcar ou xarope",
@@ -10,6 +11,9 @@ const points = [
   "Direto do apiário para a sua mesa",
   "Transparência total na procedência",
 ];
+
+const doubtMessage =
+  "Oi! Tenho algumas dúvidas sobre o Mel Duas Abelhas (qualidade, entrega, valores). Pode me ajudar?";
 
 export function Objection() {
   return (
@@ -34,22 +38,27 @@ export function Objection() {
             Muito "mel" por aí é misturado.{" "}
             <span className="text-gradient-honey">Aqui é diferente.</span>
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-white/60 md:text-lg">
-            A maioria dos méis industrializados contém misturas como xarope de milho, glucose ou açúcar invertido.
-            O consumidor quer confiança e procedência — e é exatamente isso que o Mel Duas Abelhas entrega.
+          <p className="mt-6 text-base leading-relaxed text-white/65 md:text-lg">
+            A maioria dos méis industrializados contém xarope de milho, glucose ou açúcar invertido.
+            Você merece saber exatamente o que está consumindo — e exatamente de onde vem.
           </p>
 
           <div className="mt-8 space-y-4">
             {points.map((point) => (
               <div key={point} className="flex items-center gap-3 text-left">
                 <CheckCircle className="h-5 w-5 shrink-0 text-honey-gold" />
-                <span className="text-sm font-medium text-white/80">{point}</span>
+                <span className="text-sm font-medium text-white/85">{point}</span>
               </div>
             ))}
           </div>
 
-          <WhatsAppCTA size="lg" className="mt-10">
-            Quero mel puro de verdade
+          <WhatsAppCTA
+            size="lg"
+            href={buildWhatsAppUrl(doubtMessage)}
+            icon={<MessageCircle className="h-5 w-5" />}
+            className="mt-10"
+          >
+            Tirar minhas dúvidas
           </WhatsAppCTA>
         </FadeIn>
       </div>

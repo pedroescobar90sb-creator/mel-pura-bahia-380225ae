@@ -9,7 +9,6 @@ import { Products } from "@/components/Products";
 import { HowToBuy } from "@/components/HowToBuy";
 import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
-import { About } from "@/components/About";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
@@ -18,24 +17,24 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mel Duas Abelhas — Mel Puro 100% Natural em Salvador" },
+      { title: "Mel Duas Abelhas — Mel Puro com Entrega em 24h em Salvador" },
       {
         name: "description",
         content:
-          "Mel puro 100% natural de abelha italiana, direto do produtor em Riachão do Jacuípe. Entregas em Salvador e RMS. Sem mistura, produção familiar.",
+          "Mel puro 100% natural, direto do produtor em Riachão do Jacuípe. Entrega em 24h em Salvador e RMS. Peça agora pelo WhatsApp.",
       },
-      { property: "og:title", content: "Mel Duas Abelhas — Mel Puro 100% Natural em Salvador" },
+      { property: "og:title", content: "Mel Duas Abelhas — Mel Puro com Entrega em 24h em Salvador" },
       {
         property: "og:description",
         content:
-          "Mel puro direto do produtor em Riachão do Jacuípe – BA. 100% natural, sem mistura. Entregas em Salvador e Região Metropolitana.",
+          "Mel puro direto do produtor em Riachão do Jacuípe – BA. Entrega em 24h em Salvador e Região Metropolitana.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "keywords",
         content:
-          "mel puro Salvador, mel natural Salvador, mel direto do produtor Salvador, mel 100% natural Salvador, mel da Bahia, mel Riachão do Jacuípe, mel duas abelhas",
+          "mel puro Salvador, mel natural Salvador, entrega de mel Salvador, mel direto do produtor, mel 100% natural, mel da Bahia, mel Riachão do Jacuípe, mel duas abelhas",
       },
     ],
   }),
@@ -47,17 +46,27 @@ function Index() {
     <>
       <Header />
       <main>
+        {/* 1. Hero — proposta + entrega 24h + CTA primário */}
         <Hero />
+        {/* 2. Selos rápidos */}
         <TrustBar />
-        <Benefits />
-        <Objection />
-        <Origin />
+        {/* 3. Produtos — oferta visível cedo, kit em destaque */}
         <Products />
-        <HowToBuy />
+        {/* 4. Benefícios — reforça desejo pós-oferta */}
+        <Benefits />
+        {/* 5. Origem + Sobre fundidos — confiança sem cortar venda */}
+        <Origin />
+        {/* 6. Galeria — prova visual */}
         <Gallery />
+        {/* 7. Depoimentos — prova social neutralizada + CTA */}
         <Testimonials />
-        <About />
+        {/* 8. Como comprar — remove fricção */}
+        <HowToBuy />
+        {/* 9. Quebra-objeção próximo do fechamento */}
+        <Objection />
+        {/* 10. FAQ */}
         <FAQ />
+        {/* 11. CTA final — urgência entrega hoje */}
         <FinalCTA />
       </main>
       <Footer />
