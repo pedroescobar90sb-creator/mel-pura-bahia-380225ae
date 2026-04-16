@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { WhatsAppCTA } from "./shared/WhatsAppCTA";
-import logo from "@/assets/logo-mel-duas-abelhas.jpg";
+
 
 const navLinks = [
   { href: "#beneficios", label: "Benefícios" },
