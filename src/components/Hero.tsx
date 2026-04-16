@@ -34,7 +34,7 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <span className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full ring-2 ring-honey/40 shadow-[0_10px_40px_rgba(190,140,40,0.4)] md:h-20 md:w-20">
+            <span className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-2 ring-honey/40 shadow-[0_10px_40px_rgba(190,140,40,0.4)] sm:h-36 sm:w-36 md:h-24 md:w-24 lg:h-28 lg:w-28">
               <img
                 src={logo}
                 alt="Mel Duas Abelhas — Mel Puro 100% Natural"
