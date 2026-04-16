@@ -1,4 +1,4 @@
-import { Quote, MessageCircle, Instagram } from "lucide-react";
+import { Quote, MessageCircle, Camera } from "lucide-react";
 import { SectionWrapper } from "./shared/SectionWrapper";
 import { SectionHeader } from "./shared/SectionHeader";
 import { FadeIn } from "./shared/FadeIn";
