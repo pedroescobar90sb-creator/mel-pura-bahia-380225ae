@@ -1,5 +1,8 @@
-import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import { SectionWrapper } from "./shared/SectionWrapper";
+import { SectionHeader } from "./shared/SectionHeader";
+import { FadeIn } from "./shared/FadeIn";
+import { PremiumCard } from "./shared/PremiumCard";
 
 const testimonials = [
   {
@@ -21,35 +24,17 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 bg-honeycomb" />
-      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em] text-honey-dark">
-            Depoimentos
-          </span>
-          <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            O que dizem{" "}
-            <span className="text-gradient-honey">nossos clientes</span>
-          </h2>
-        </motion.div>
+    <SectionWrapper variant="light">
+      <SectionHeader
+        eyebrow="Depoimentos"
+        title="O que dizem"
+        highlight="nossos clientes"
+      />
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              className="relative overflow-hidden rounded-2xl border border-honey/10 bg-card p-8 shadow-card-premium"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
+      <div className="grid gap-6 md:grid-cols-3">
+        {testimonials.map((t, i) => (
+          <FadeIn key={t.name} delay={i * 0.1}>
+            <PremiumCard className="h-full p-8">
               <Quote className="absolute top-6 right-6 h-10 w-10 text-honey/10" />
 
               <div className="mb-5 flex gap-1">
@@ -67,10 +52,10 @@ export function Testimonials() {
                   <p className="text-xs text-muted-foreground">{t.location}</p>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </PremiumCard>
+          </FadeIn>
+        ))}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
